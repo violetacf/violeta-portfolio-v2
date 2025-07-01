@@ -1,12 +1,12 @@
-import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello world </p>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <NavBar />
+    </ThemeProvider>
   );
 }
 

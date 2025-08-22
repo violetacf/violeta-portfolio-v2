@@ -4,66 +4,91 @@ import {
   Button,
   IconButton,
   Toolbar,
-  Typography,
-  Box,
   Menu,
-  MenuList,
   MenuItem,
+  Box,
+  useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import falloutGif from "../../assets/falloutHello.gif";
 
 export default function NavBar() {
   const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
+  const theme = useTheme();
+
   const openMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorNav(event.currentTarget);
   };
+
   const closeMenu = () => {
     setAnchorNav(null);
   };
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    closeMenu();
+  };
+
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
-        >
-          Violeta's portfolio
-        </Typography>
-        <Box sx={{ display: { xs: "none", md: "flex" } }}>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">Projects</Button>
-          {/* <Button color="inherit">Escape rooms</Button> */}
+    <AppBar
+      position="sticky"
+      sx={{ backgroundColor: theme.palette.primary.main }}
+    >
+      <Toolbar sx={{ justifyContent: "space-between", position: "relative" }}>
+        <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
+          <Button
+            sx={{ color: theme.palette.secondary.contrastText }}
+            onClick={() => scrollToSection("about")}
+          >
+            About
+          </Button>
+          <Button
+            sx={{ color: theme.palette.secondary.contrastText }}
+            onClick={() => scrollToSection("projects")}
+          >
+            Projects
+          </Button>
+          <Button
+            sx={{ color: theme.palette.secondary.contrastText }}
+            onClick={() => scrollToSection("contact")}
+          >
+            Contact
+          </Button>
         </Box>
+
+        {/* Mobile menu */}
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
+            sx={{ color: theme.palette.secondary.contrastText }}
             onClick={openMenu}
           >
             <MenuIcon />
           </IconButton>
           <Menu
             open={Boolean(anchorNav)}
+            anchorEl={anchorNav}
             onClose={closeMenu}
-            sx={{ display: { xs: "flex", md: "none" } }}
           >
-            <MenuList>
-              <MenuItem>Home</MenuItem>
-              <MenuItem>Projects</MenuItem>
-              {/* <MenuItem>Escape rooms</MenuItem> */}
-            </MenuList>
+            <MenuItem onClick={() => scrollToSection("about")}>About</MenuItem>
+            <MenuItem onClick={() => scrollToSection("projects")}>
+              Projects
+            </MenuItem>
+            <MenuItem onClick={() => scrollToSection("contact")}>
+              Contact
+            </MenuItem>
           </Menu>
         </Box>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-        >
-          Violeta's portfolio
-        </Typography>
+        <Box
+          component="img"
+          src={falloutGif}
+          alt="Fallout character"
+          sx={{
+            position: "absolute",
+            right: 10,
+            width: 50,
+            height: 50,
+          }}
+        />
       </Toolbar>
     </AppBar>
   );

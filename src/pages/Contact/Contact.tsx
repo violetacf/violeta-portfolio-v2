@@ -24,6 +24,11 @@ export default function Contact() {
             title: "fallout-title",
             confirmButton: "fallout-button",
           },
+          allowOutsideClick: false,
+          allowEscapeKey: true,
+          confirmButtonText: "OK",
+        }).then(() => {
+          Swal.close();
         });
       },
       (error) => {
@@ -113,7 +118,7 @@ export default function Contact() {
         }}
       >
         <TextField
-          label="Email *"
+          label="Email"
           name="user_email"
           type="email"
           required
@@ -124,7 +129,7 @@ export default function Contact() {
           }}
         />
         <TextField
-          label="Name *"
+          label="Name"
           name="user_name"
           required
           variant="outlined"
@@ -134,7 +139,7 @@ export default function Contact() {
           }}
         />
         <TextField
-          label="Message *"
+          label="Message"
           name="user_message"
           required
           multiline

@@ -20,6 +20,11 @@ export default function Contact() {
           icon: "success",
           title: "Message Sent Successfully",
           confirmButtonText: "OK",
+          customClass: {
+            popup: "fallout-popup",
+            title: "fallout-title",
+            confirmButton: "fallout-button",
+          },
         }).then(() => {
           e.currentTarget.reset();
         });
@@ -30,6 +35,11 @@ export default function Contact() {
           title: "Ooops, something went wrong",
           text: "Please try again.",
           confirmButtonText: "OK",
+          customClass: {
+            popup: "fallout-popup",
+            title: "fallout-title",
+            confirmButton: "fallout-button",
+          },
         });
       });
   };
@@ -208,60 +218,57 @@ export default function Contact() {
 
       <style>
         {`
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-      20%, 22%, 24%, 55% { opacity: 0.75; }
-    }
+          @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 22%, 24%, 55% { opacity: 0.75; }
+          }
 
-    /* General flicker for most elements */
-    h3, label, input, textarea, a, svg { 
-      animation: flicker 1.5s infinite alternate; 
-    }
+          /* General flicker for most elements */
+          h3, label, input, textarea, a, svg { 
+            animation: flicker 1.5s infinite alternate; 
+          }
 
-    /* Buttons outside popups get flicker */
-    button:not(.swal2-confirm) {
-      animation: flicker 1.5s infinite alternate; 
-    }
+          /* Buttons outside popups get flicker */
+          button:not(.swal2-confirm) {
+            animation: flicker 1.5s infinite alternate; 
+          }
 
-    /* Popup styling */
-    .fallout-popup {
-      background-color: #0b0b0b !important;
-      border: 2px solid #00ff99;
-      font-family: 'VT323', monospace;
-      text-shadow: 0 0 12px #00ff99;
-      animation: flicker 1.5s infinite alternate;
-    }
+          /* Popup styling */
+          .fallout-popup {
+            background-color: #0b0b0b !important;
+            border: 2px solid #00ff99;
+            font-family: 'VT323', monospace;
+            text-shadow: 0 0 12px #00ff99;
+          }
 
-    .fallout-popup button {
-      animation: none !important; /* ✅ disables flicker on buttons in popup */
-      pointer-events: auto !important; /* ensures confirm button is clickable */
-    }
+          .fallout-title {
+            color: #00ff99 !important;
+            letter-spacing: 2px;
+            font-size: 1.8rem;
+            text-shadow: 0 0 12px #00ff99;
+          }
 
-    .fallout-title {
-      color: #00ff99 !important;
-      letter-spacing: 2px;
-      font-size: 1.8rem;
-      text-shadow: 0 0 12px #00ff99;
-    }
+          .fallout-button {
+            background-color: #00ff99 !important;
+            color: #0b0b0b !important;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+            pointer-events: auto !important; /* ensures button is clickable */
+            animation: none !important; /* disables flicker */
+          }
 
-    .fallout-button {
-      background-color: #00ff99 !important;
-      color: #0b0b0b !important;
-      font-family: 'VT323', monospace;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 8px;
-      text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .fallout-button:hover {
-      background-color: #00cc77 !important;
-      transform: scale(1.05);
-      text-shadow: 0 0 20px #00ff99;
-    }
-  `}
+          .fallout-button:hover {
+            background-color: #00cc77 !important;
+            transform: scale(1.05);
+            text-shadow: 0 0 20px #00ff99;
+          }
+        `}
       </style>
     </Box>
   );
 }
+

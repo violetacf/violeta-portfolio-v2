@@ -56,7 +56,6 @@ export default function NavBar() {
           </Button>
         </Box>
 
-        {/* Mobile menu */}
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <IconButton
             sx={{ color: theme.palette.secondary.contrastText }}

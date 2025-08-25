@@ -7,7 +7,11 @@ import {
   CardContent,
   Button,
   useTheme,
+  IconButton,
 } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub"; // Use MUI icon
+import React from "react";
+import defaultImage from "../../assets/project.jpg";
 
 export default function Projects() {
   const theme = useTheme();
@@ -41,29 +45,28 @@ export default function Projects() {
         }}
       />
 
-      {/* Heading */}
       <Typography
         variant="h3"
         gutterBottom
         sx={{
           color: "#00ff99",
           textAlign: "center",
-          textShadow: "0 0 10px #00ff99",
+          textShadow: "0 0 12px #00ff99",
           letterSpacing: 2,
           mb: { xs: 2, md: 4 },
+          fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
         }}
       >
         Projects
       </Typography>
 
-      {/* Cards grid */}
       <Box
         sx={{
           display: "grid",
+          justifyContent: "center",
           gridTemplateColumns: {
             xs: "1fr",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(3, 1fr)",
+            sm: "repeat(auto-fit, minmax(300px, 1fr))",
           },
           gap: 4,
           zIndex: 1,
@@ -92,12 +95,11 @@ export default function Projects() {
             <CardMedia
               component="img"
               height="180"
-              image={require(`../../assets/${project.image}`)}
+              image={project.image || defaultImage}
               alt={project.title}
-              sx={{
-                borderBottom: "2px solid #00ff99",
-              }}
+              sx={{ borderBottom: "2px solid #00ff99" }}
             />
+
             <CardContent
               sx={{
                 color: "#00ff00",
@@ -127,40 +129,48 @@ export default function Projects() {
               >
                 {project.description}
               </Typography>
-              {project.link && (
-                <Button
-                  size="small"
-                  variant="outlined"
-                  href={project.link}
-                  target="_blank"
-                  sx={{
-                    fontFamily: "'VT323', monospace",
-                    color: "#00ff99",
-                    borderColor: "#00ff99",
-                    textShadow: "0 0 5px #00ff99",
-                    "&:hover": {
-                      borderColor: "#00ffcc",
-                      backgroundColor: "rgba(0,255,153,0.1)",
-                      boxShadow: "0 0 15px #00ff99",
-                    },
-                  }}
-                >
-                  View
-                </Button>
-              )}
+
+              {/* Buttons */}
+              <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
+                {project.link && (
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    href={project.link}
+                    target="_blank"
+                    sx={{
+                      fontFamily: "'VT323', monospace",
+                      color: "#00ff99",
+                      borderColor: "#00ff99",
+                      textShadow: "0 0 5px #00ff99",
+                      "&:hover": {
+                        borderColor: "#00ffcc",
+                        backgroundColor: "rgba(0,255,153,0.1)",
+                        boxShadow: "0 0 15px #00ff99",
+                      },
+                    }}
+                  >
+                    View Deployed
+                  </Button>
+                )}
+
+                {project.github && (
+                  <IconButton
+                    href={project.github}
+                    target="_blank"
+                    sx={{
+                      color: "#00ff99",
+                      "&:hover": { color: "#00ffcc" },
+                    }}
+                  >
+                    <GitHubIcon sx={{ fontSize: 24 }} />
+                  </IconButton>
+                )}
+              </Box>
             </CardContent>
           </Card>
         ))}
       </Box>
-
-      <style>
-        {`
-          @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-            20%, 22%, 24%, 55% { opacity: 0.7; }
-          }
-        `}
-      </style>
     </Box>
   );
 }

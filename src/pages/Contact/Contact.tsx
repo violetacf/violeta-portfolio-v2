@@ -19,15 +19,6 @@ export default function Contact() {
         Swal.fire({
           icon: "success",
           title: "Message Sent Successfully",
-          background: "#0b0b0b",
-          color: "#00ff99",
-          customClass: {
-            popup: "fallout-popup",
-            title: "fallout-title",
-            confirmButton: "fallout-button",
-          },
-          allowOutsideClick: false,
-          allowEscapeKey: true,
           confirmButtonText: "OK",
         }).then(() => {
           e.currentTarget.reset();
@@ -38,13 +29,6 @@ export default function Contact() {
           icon: "error",
           title: "Ooops, something went wrong",
           text: "Please try again.",
-          background: "#0b0b0b",
-          color: "#00ff99",
-          customClass: {
-            popup: "fallout-popup",
-            title: "fallout-title",
-            confirmButton: "fallout-button",
-          },
           confirmButtonText: "OK",
         });
       });

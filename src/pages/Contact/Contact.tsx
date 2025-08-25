@@ -25,8 +25,6 @@ export default function Contact() {
             title: "fallout-title",
             confirmButton: "fallout-button",
           },
-        }).then(() => {
-          e.currentTarget.reset();
         });
       })
       .catch(() => {
@@ -41,6 +39,9 @@ export default function Contact() {
             confirmButton: "fallout-button",
           },
         });
+      })
+      .finally(() => {
+        e.currentTarget.reset();
       });
   };
 
@@ -271,4 +272,3 @@ export default function Contact() {
     </Box>
   );
 }
-

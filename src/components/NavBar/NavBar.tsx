@@ -25,7 +25,12 @@ export default function NavBar() {
   };
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) {
+      const appBarHeight = window.innerWidth < 600 ? 56 : 64;
+      const y = el.getBoundingClientRect().top + window.scrollY - appBarHeight;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
     closeMenu();
   };
 

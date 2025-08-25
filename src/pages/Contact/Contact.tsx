@@ -230,8 +230,10 @@ export default function Contact() {
           h3, button, label, input, textarea, a, svg { 
             animation: flicker 1.5s infinite alternate; 
           }
+            button:not(.swal2-confirm) {
+            animation: flicker 1.5s infinite alternate; 
+          }
 
-          /* Fallout SweetAlert2 styles */
           .fallout-popup {
             background-color: #0b0b0b !important;
             border: 2px solid #00ff99;

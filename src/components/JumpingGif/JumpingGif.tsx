@@ -9,7 +9,7 @@ interface JumpingGifProps {
 
 export default function JumpingGif({
   size = { xs: 60, sm: 80, md: 90 },
-  message = "YAYYY! ⚡ Vault systems online!",
+  message = "Hello World!",
 }: JumpingGifProps) {
   const [jump, setJump] = useState(false);
   const gifRef = useRef<HTMLDivElement>(null);
@@ -33,6 +33,30 @@ export default function JumpingGif({
 
   return (
     <>
+      {/* Ola decorativa */}
+      <Box
+        className="waveLine"
+        sx={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: "30pt",
+          background:
+            "repeating-linear-gradient(90deg, transparent, transparent 10px, #00ff99 10px, #00ff99 11px)",
+          maskImage:
+            "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
+          maskRepeat: "repeat-x",
+          maskSize: "100px 40px",
+          WebkitMaskImage:
+            "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
+          WebkitMaskRepeat: "repeat-x",
+          WebkitMaskSize: "100px 40px",
+          boxShadow: "0 0 15px #00ff99",
+        }}
+      />
+
+      {/* Gif */}
       <Box
         component="img"
         src={jumpingGif}

@@ -1,31 +1,10 @@
 import { Box, Typography, Avatar, useTheme } from "@mui/material";
-import { useState, useEffect, useRef } from "react";
 import myPicture from "../../assets/myPicture.jpg";
-import falloutGif from "../../assets/falloutJumping.gif";
 import Technologies from "../../components/Technologies/Technologies";
 import JumpingGif from "../../components/JumpingGif/JumpingGif";
 
 export default function About() {
   const theme = useTheme();
-  const [jump, setJump] = useState(false);
-  const dinoRef = useRef<HTMLDivElement>(null);
-  const [dinoLeft, setDinoLeft] = useState(0);
-
-  const handleJump = () => {
-    setJump(true);
-    setTimeout(() => setJump(false), 1500);
-  };
-
-  useEffect(() => {
-    const updatePosition = () => {
-      if (dinoRef.current) {
-        const left = dinoRef.current.getBoundingClientRect().left;
-        setDinoLeft(left);
-      }
-      requestAnimationFrame(updatePosition);
-    };
-    requestAnimationFrame(updatePosition);
-  }, []);
 
   return (
     <Box
@@ -112,123 +91,120 @@ export default function About() {
             boxShadow: "0 0 25px #00ff00, inset 0 0 15px #00ff00",
             fontFamily: "'VT323', monospace",
             color: "#00ff00",
-            whiteSpace: "pre-line",
             textAlign: "left",
-            fontSize: { xs: "0.95rem", sm: "1.05rem", md: "1.15rem" },
+            fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" }, // regular text
             lineHeight: 1.6,
+            display: "flex",
+            flexDirection: "column",
+            gap: 1.5,
             animation: "flicker 1.5s infinite alternate",
           }}
         >
-          {`[VAULT-TEC TERMINAL LOG: VIOLETA.EXE]  
-> STATUS: ONLINE — SYSTEMS NOMINAL  
-> CORE MODULES: ACCESSIBILITY | FRONTEND | BACKEND  
-> PRIMARY DIRECTIVE: Construct inclusive digital landscapes for all survivors  
-> CONTINUOUS UPDATE: Scanning & absorbing new technologies... COMPLETE [✓]  
+          <Typography
+            sx={{
+              color: "#00ffcc",
+              fontWeight: "bold",
+              fontSize: { xs: "0.8rem", sm: "0.95rem", md: "1.1rem" }, // slightly bigger for headings
+            }}
+          >
+            [VAULT-TEC TERMINAL LOG: VIOLETA.EXE]
+          </Typography>
 
---- PERSONAL SUBROUTINE FILES ---  
-- Plant caretaker: photosynthesis monitoring [ACTIVE]  
-- Animal companion protocols: loyalty secured [ACTIVE]  
-- Physical training: pull-up sequence x3 executed successfully [NEW RECORD]  
-- Café locator: Madrid sector (hidden stash points discovered)  
-- Videogame immersion: simulation systems online  
-- Thriller archives: novels decrypted nightly  
-- Puzzle-solving routines: engaged & optimized`}
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+            }}
+          >
+            SYSTEM STATUS:
+          </Typography>
+          <Typography
+            sx={{ fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" } }}
+          >
+            ONLINE — ALL SYSTEMS NOMINAL
+          </Typography>
+
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+            }}
+          >
+            CORE MODULES:
+          </Typography>
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+            <Typography
+              sx={{ fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" } }}
+            >
+              - ACCESSIBILITY
+            </Typography>
+            <Typography
+              sx={{ fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" } }}
+            >
+              - FRONTEND
+            </Typography>
+            <Typography
+              sx={{ fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" } }}
+            >
+              - BACKEND
+            </Typography>
+          </Box>
+
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+            }}
+          >
+            PRIMARY DIRECTIVE:
+          </Typography>
+          <Typography
+            sx={{ fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" } }}
+          >
+            Build inclusive digital landscapes for all survivors.
+          </Typography>
+
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+            }}
+          >
+            PERSONAL SUBROUTINES:
+          </Typography>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+            {[
+              "- Plant caretaker .......... [ACTIVE]",
+              "- Animal companion protocols [ACTIVE]",
+              "- Physical training: pull-ups x3 [NEW RECORD]",
+              "- Café locator: Madrid sector [ONLINE]",
+              "- Videogame immersion ........ [RUNNING]",
+              "- Thriller archives .......... [DECRYPTING NIGHTLY]",
+              "- Puzzle-solving routines .... [OPTIMIZED]",
+            ].map((item, idx) => (
+              <Typography
+                key={idx}
+                sx={{
+                  fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" },
+                }}
+              >
+                {item}
+              </Typography>
+            ))}
+          </Box>
         </Box>
       </Box>
 
       <Technologies />
-
-      <Box
-        className="waveLine"
-        sx={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          width: "100%",
-          height: "30pt",
-          background:
-            "repeating-linear-gradient(90deg, transparent, transparent 10px, #00ff99 10px, #00ff99 11px)",
-          maskImage:
-            "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
-          maskRepeat: "repeat-x",
-          maskSize: "100px 40px",
-          WebkitMaskImage:
-            "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
-          WebkitMaskRepeat: "repeat-x",
-          WebkitMaskSize: "100px 40px",
-          boxShadow: "0 0 15px #00ff99",
-        }}
-      />
-
-      <Box
-        component="img"
-        src={falloutGif}
-        alt="Fallout jumping rope"
-        ref={dinoRef}
-        onClick={handleJump}
-        sx={{
-          position: "absolute",
-          bottom: 10,
-          width: { xs: 60, sm: 80, md: 90 },
-          height: { xs: 60, sm: 80, md: 90 },
-          cursor: "pointer",
-          animation: jump
-            ? "moveDino 20s linear infinite, jump 0.5s ease-out 1"
-            : "moveDino 20s linear infinite",
-        }}
-      />
-
-      {jump && (
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 150, // higher jump
-            left: dinoLeft,
-            backgroundColor: "#00ff99",
-            color: "#000",
-            fontFamily: "'VT323', monospace",
-            fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
-            padding: "6px 12px",
-            borderRadius: 3,
-            boxShadow: "0 0 12px #00ff99",
-            whiteSpace: "nowrap",
-            zIndex: 2,
-            animation: "fadeUp 1.2s ease-out",
-            transform: "translateX(-50%)",
-          }}
-        >
-          YAYYY! ⚡ Vault systems online!
-        </Box>
-      )}
-      <JumpingGif message="Hello World!" />
+      <JumpingGif />
 
       <style>
         {`
-             @keyframes flicker {
-                0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-                20%, 22%, 24%, 55% { opacity: 0.75; }
-              }
-
-              @keyframes moveDino {
-               0% { left: 0; transform: scaleX(-1); }
-                49% { left: calc(100% - 70px); transform: scaleX(-1); }
-                50% { left: calc(100% - 70px); transform: scaleX(1); }
-                99% { left: 0; transform: scaleX(1); }
-                100% { left: 0; transform: scaleX(-1); }
-              }
-
-             @keyframes jump {
-               0% { transform: translateY(0); }
-               50% { transform: translateY(-50px); }
-                  100% { transform: translateY(0); }
-             }
-
-             @keyframes fadeInOut {
-                 0% { opacity: 0; transform: translateY(10px); }
-                50% { opacity: 1; transform: translateY(0); }
-                100% { opacity: 0; transform: translateY(-10px); }
-             }
-            `}
+          @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 22%, 24%, 55% { opacity: 0.75; }
+          }
+        `}
       </style>
     </Box>
   );

@@ -1,15 +1,40 @@
-import { Box, Typography, Link, useTheme } from "@mui/material";
+import { Box, Typography, TextField, Button, Link } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import JumpingGif from "../../components/JumpingGif/JumpingGif";
+import emailjs from "emailjs-com";
+import Swal from "sweetalert2";
 
 export default function Contact() {
-  const theme = useTheme();
+  const serviceID = process.env.REACT_APP_SERVICE_ID!;
+  const templateID = process.env.REACT_APP_TEMPLATE_ID!;
+  const publicKey = process.env.REACT_APP_PUBLIC_KEY!;
+
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    emailjs.sendForm(serviceID, templateID, e.currentTarget, publicKey).then(
+      () => {
+        Swal.fire({
+          icon: "success",
+          title: "Message Sent Successfully",
+        });
+      },
+      (error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Ooops, something went wrong",
+          text: error.text,
+        });
+      }
+    );
+    e.currentTarget.reset();
+  };
 
   return (
     <Box
       id="contact"
       sx={{
-        minHeight: "50vh",
+        minHeight: "80vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -23,6 +48,8 @@ export default function Contact() {
         overflow: "hidden",
       }}
     >
+      <JumpingGif message="Contact me here!" />
+
       <Box
         sx={{
           position: "absolute",
@@ -47,15 +74,91 @@ export default function Contact() {
         Contact
       </Typography>
 
+      <Typography
+        sx={{
+          color: "#00ff99",
+          maxWidth: "600px",
+          textAlign: "center",
+          mb: 3,
+        }}
+      >
+        Please fill out the form below. Fields with * are required. I will get
+        back to you as soon as possible.
+      </Typography>
+
+      <Box
+        component="form"
+        onSubmit={handleOnSubmit}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 3,
+          width: "100%",
+          maxWidth: "600px",
+          zIndex: 1,
+        }}
+      >
+        <TextField
+          label="Email *"
+          name="user_email"
+          type="email"
+          required
+          variant="outlined"
+          InputLabelProps={{ style: { color: "#00ff99" } }}
+          InputProps={{
+            style: { color: "#00ff99", borderColor: "#00ff99" },
+          }}
+        />
+        <TextField
+          label="Name *"
+          name="user_name"
+          required
+          variant="outlined"
+          InputLabelProps={{ style: { color: "#00ff99" } }}
+          InputProps={{
+            style: { color: "#00ff99" },
+          }}
+        />
+        <TextField
+          label="Message *"
+          name="user_message"
+          required
+          multiline
+          rows={4}
+          variant="outlined"
+          InputLabelProps={{ style: { color: "#00ff99" } }}
+          InputProps={{
+            style: { color: "#00ff99" },
+          }}
+        />
+
+        <Button
+          type="submit"
+          sx={{
+            backgroundColor: "#00ff99",
+            color: "#0b0b0b",
+            fontFamily: "'VT323', monospace",
+            fontSize: "1.2rem",
+            fontWeight: "bold",
+            "&:hover": {
+              backgroundColor: "#00cc77",
+            },
+          }}
+        >
+          Submit
+        </Button>
+      </Box>
+
       <Box
         sx={{
           display: "flex",
           gap: { xs: 6, md: 10 },
+          mt: 4,
           zIndex: 1,
         }}
       >
         <Link
-          href="https://www.linkedin.com/in/YOUR_LINKEDIN"
+          href="https://www.linkedin.com/in/violeta-cf/"
           target="_blank"
           sx={{
             display: "flex",
@@ -77,7 +180,7 @@ export default function Contact() {
         </Link>
 
         <Link
-          href="https://github.com/YOUR_GITHUB"
+          href="https://github.com/violetacf"
           target="_blank"
           sx={{
             display: "flex",
@@ -105,7 +208,9 @@ export default function Contact() {
             0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
             20%, 22%, 24%, 55% { opacity: 0.75; }
           }
-          a, h3 { animation: flicker 1.5s infinite alternate; }
+          h3, button, label, input, textarea, a, svg { 
+            animation: flicker 1.5s infinite alternate; 
+          }
         `}
       </style>
     </Box>

@@ -12,8 +12,10 @@ export default function Contact() {
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    emailjs.sendForm(serviceID, templateID, e.currentTarget, publicKey).then(
-      () => {
+
+    emailjs
+      .sendForm(serviceID, templateID, e.currentTarget, publicKey)
+      .then(() => {
         Swal.fire({
           icon: "success",
           title: "Message Sent Successfully",
@@ -28,10 +30,10 @@ export default function Contact() {
           allowEscapeKey: true,
           confirmButtonText: "OK",
         }).then(() => {
-          Swal.close();
+          e.currentTarget.reset();
         });
-      },
-      (error) => {
+      })
+      .catch(() => {
         Swal.fire({
           icon: "error",
           title: "Ooops, something went wrong",
@@ -43,10 +45,9 @@ export default function Contact() {
             title: "fallout-title",
             confirmButton: "fallout-button",
           },
+          confirmButtonText: "OK",
         });
-      }
-    );
-    e.currentTarget.reset();
+      });
   };
 
   return (

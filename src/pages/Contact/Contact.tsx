@@ -17,13 +17,27 @@ export default function Contact() {
         Swal.fire({
           icon: "success",
           title: "Message Sent Successfully",
+          background: "#0b0b0b",
+          color: "#00ff99",
+          customClass: {
+            popup: "fallout-popup",
+            title: "fallout-title",
+            confirmButton: "fallout-button",
+          },
         });
       },
       (error) => {
         Swal.fire({
           icon: "error",
           title: "Ooops, something went wrong",
-          text: error.text,
+          text: "Please try again.",
+          background: "#0b0b0b",
+          color: "#00ff99",
+          customClass: {
+            popup: "fallout-popup",
+            title: "fallout-title",
+            confirmButton: "fallout-button",
+          },
         });
       }
     );
@@ -210,6 +224,36 @@ export default function Contact() {
           }
           h3, button, label, input, textarea, a, svg { 
             animation: flicker 1.5s infinite alternate; 
+          }
+
+          /* Fallout SweetAlert2 styles */
+          .fallout-popup {
+            background-color: #0b0b0b !important;
+            border: 2px solid #00ff99;
+            font-family: 'VT323', monospace;
+            text-shadow: 0 0 12px #00ff99;
+            animation: flicker 1.5s infinite alternate;
+          }
+          .fallout-title {
+            color: #00ff99 !important;
+            letter-spacing: 2px;
+            font-size: 1.8rem;
+            text-shadow: 0 0 12px #00ff99;
+          }
+          .fallout-button {
+            background-color: #00ff99 !important;
+            color: #0b0b0b !important;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+          }
+          .fallout-button:hover {
+            background-color: #00cc77 !important;
+            transform: scale(1.05);
+            text-shadow: 0 0 20px #00ff99;
           }
         `}
       </style>

@@ -123,7 +123,7 @@ export default function About() {
             flex: 1,
             maxWidth: 700,
             minHeight: { xs: "auto", md: 420 },
-            p: { xs: 3, sm: 4, md: 5 },
+            p: { xs: 2, sm: 3, md: 5 },
             border: `2px solid ${theme.palette.primary.main}`,
             borderRadius: 3,
             backgroundColor: theme.palette.background.paper,
@@ -131,7 +131,7 @@ export default function About() {
             fontFamily: theme.typography.fontFamily,
             color: theme.palette.primary.main,
             textAlign: "left",
-            fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
+            fontSize: { xs: "0.65rem", sm: "0.8rem", md: "1rem" },
             lineHeight: 1.6,
             display: "flex",
             flexDirection: "column",
@@ -143,89 +143,87 @@ export default function About() {
             sx={{
               color: theme.palette.secondary.main,
               fontWeight: "bold",
-              fontSize: { xs: "0.8rem", sm: "0.95rem", md: "1.1rem" },
+              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.1rem" },
             }}
           >
-            [VAULT-TEC TERMINAL LOG: VIOLETA.EXE]
+            [VAULT-TEC LOG: VIOLETA.EXE]
           </Typography>
 
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+              fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
             }}
           >
             SYSTEM STATUS:
           </Typography>
           <Typography
-            sx={{ fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" } }}
+            sx={{ fontSize: { xs: "0.65rem", sm: "0.8rem", md: "0.95rem" } }}
           >
-            ONLINE — ALL SYSTEMS NOMINAL
+            ONLINE — READY TO CODE
           </Typography>
 
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+              fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
             }}
           >
             CORE MODULES:
           </Typography>
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
             <Typography
-              sx={{ fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" } }}
+              sx={{ fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" } }}
             >
-              - ACCESSIBILITY
+              - Accessibility
             </Typography>
             <Typography
-              sx={{ fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" } }}
+              sx={{ fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" } }}
             >
-              - FRONTEND
+              - Frontend
             </Typography>
             <Typography
-              sx={{ fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" } }}
+              sx={{ fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" } }}
             >
-              - BACKEND
+              - Backend
             </Typography>
           </Box>
 
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+              fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
             }}
           >
             PRIMARY DIRECTIVE:
           </Typography>
           <Typography
-            sx={{ fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" } }}
+            sx={{ fontSize: { xs: "0.65rem", sm: "0.8rem", md: "0.95rem" } }}
           >
-            Build inclusive digital landscapes for all survivors.
+            Build inclusive digital experiences for all users.
           </Typography>
 
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1.05rem" },
+              fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
             }}
           >
             PERSONAL SUBROUTINES:
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
             {[
-              "- Plant caretaker .......... [ACTIVE]",
+              "- Plant caretaker [ACTIVE]",
               "- Animal companion protocols [ACTIVE]",
               "- Physical training: pull-ups x3 [NEW RECORD]",
               "- Café locator: Madrid sector [ONLINE]",
-              "- Videogame immersion ........ [RUNNING]",
-              "- Thriller archives .......... [DECRYPTING NIGHTLY]",
-              "- Puzzle-solving routines .... [OPTIMIZED]",
+              "- Gaming immersion [RUNNING]",
+              "- Thriller archives [DECRYPTING NIGHTLY]",
+              "- Puzzle-solving routines [OPTIMIZED]",
             ].map((item, idx) => (
               <Typography
                 key={idx}
-                sx={{
-                  fontSize: { xs: "0.68rem", sm: "0.83rem", md: "0.95rem" },
-                }}
+                sx={{ fontSize: { xs: "0.6rem", sm: "0.75rem", md: "0.9rem" } }}
               >
                 {item}
               </Typography>

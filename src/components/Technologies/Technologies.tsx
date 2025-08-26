@@ -23,6 +23,7 @@ export default function Technologies() {
         "&:hover svg": {
           transform: "scale(1.15)",
           filter: `drop-shadow(0 0 1pt ${theme.palette.primary.main}) drop-shadow(0 0 25px ${theme.palette.primary.main})`,
+          color: theme.palette.secondary.main,
         },
       }}
     >

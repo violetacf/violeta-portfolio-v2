@@ -179,9 +179,12 @@ export default function Contact() {
               transition: "all 0.3s ease-in-out",
               "&:hover": {
                 transform: "scale(1.2)",
-                textShadow: `0 0 25px ${theme.palette.primary.main}`,
+                color: theme.palette.secondary.main,
+                textShadow: `0 0 25px ${theme.palette.secondary.main}`,
+                filter: `drop-shadow(0 0 1pt ${theme.palette.primary.main}) drop-shadow(0 0 25px ${theme.palette.primary.main})`,
               },
             }}
+            aria-label={`Go to my ${label} profile`}
           >
             <Icon sx={{ fontSize: { xs: 50, sm: 60, md: 70 } }} />
             <Typography sx={{ mt: 1, fontSize: { xs: "1rem", sm: "1.1rem" } }}>

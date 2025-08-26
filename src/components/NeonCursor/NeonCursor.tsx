@@ -87,8 +87,8 @@ export default function NeonCursor() {
           pointerEvents: "none",
           transform: "translate(-50%, -50%)",
           zIndex: 9998,
-          boxShadow: `0 0 12px ${theme.palette.primary.main}, 
-                      0 0 25px ${theme.palette.primary.main}`,
+          boxShadow: `0 0 12px ${theme.palette.secondary.main}, 
+                      0 0 25px ${theme.palette.secondary.main}`,
         }}
       />
 

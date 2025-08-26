@@ -59,7 +59,9 @@ export default function AnimatedTitle({ text }: AnimatedTitleProps) {
         {
           duration: 0.5,
           repeat: -1,
+
           onRepeat: () => {
+            if (!titleRef.current) return;
             const current = titleRef.current!.querySelector("span");
             if (current) {
               current.style.opacity = current.style.opacity === "1" ? "0" : "1";

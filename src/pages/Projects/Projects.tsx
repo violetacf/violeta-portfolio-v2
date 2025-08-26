@@ -1,3 +1,6 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AnimatedTitle from "../../components/AnimatedTitle/AnimatedTitle";
 import { projects } from "../../data/projects";
 import {
@@ -13,8 +16,37 @@ import {
 import GitHubIcon from "@mui/icons-material/GitHub";
 import defaultImage from "../../assets/project.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Projects() {
   const theme = useTheme();
+  const cardsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    cardsRef.current.forEach((card, index) => {
+      if (!card) return;
+
+      const fromX = index % 2 === 0 ? -200 : 200;
+
+      gsap.fromTo(
+        card,
+        { x: fromX, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            end: "bottom 20%", // hasta que salga de la sección
+            toggleActions: "play reverse play reverse", // entra y sale según scroll
+          },
+          delay: index * 0.1,
+        }
+      );
+    });
+  }, []);
 
   return (
     <Box
@@ -62,6 +94,9 @@ export default function Projects() {
         {projects.map((project, index) => (
           <Card
             key={index}
+            ref={(el) => {
+              if (el) cardsRef.current[index] = el;
+            }}
             sx={{
               backgroundColor: theme.palette.background.paper,
               border: `2px solid ${theme.palette.primary.main}`,

@@ -16,4 +16,11 @@ export const projects = [
     link: "https://lilybloom.onrender.com/",
     github: "https://github.com/violetacf/lilybloom-frontend",
   },
+  // {
+  //   title: "LilyBloom",
+  //   description: "A React project for floral arrangements.",
+  //   image: lilybloom,
+  //   link: "https://lilybloom.onrender.com/",
+  //   github: "https://github.com/violetacf/lilybloom-frontend",
+  // },
 ];

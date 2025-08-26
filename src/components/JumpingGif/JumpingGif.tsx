@@ -43,12 +43,12 @@ export default function JumpingGif({
           width: "100%",
           height: "30pt",
           background: `repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 10px,
-            ${theme.palette.primary.main} 10px,
-            ${theme.palette.primary.main} 11px
-          )`,
+      90deg,
+      transparent,
+      transparent 10px,
+      ${theme.palette.secondary.main} 10px,
+      ${theme.palette.secondary.main} 11px
+    )`,
           maskImage:
             "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
           maskRepeat: "repeat-x",
@@ -57,7 +57,7 @@ export default function JumpingGif({
             "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
           WebkitMaskRepeat: "repeat-x",
           WebkitMaskSize: "100px 40px",
-          boxShadow: `0 0 15px ${theme.palette.primary.main}`,
+          boxShadow: `0 0 15px ${theme.palette.secondary.main}`,
         }}
       />
 

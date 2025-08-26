@@ -6,10 +6,12 @@ import NavBar from "./components/NavBar/NavBar";
 import About from "./pages/About/About";
 import Projects from "./pages/Projects/Projects";
 import Contact from "./pages/Contact/Contact";
+import NeonCursor from "./components/NeonCursor/NeonCursor";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <NeonCursor />
       <NavBar />
       <main>
         <About />

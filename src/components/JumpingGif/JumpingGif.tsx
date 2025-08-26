@@ -33,7 +33,6 @@ export default function JumpingGif({
 
   return (
     <>
-      {/* Ola decorativa */}
       <Box
         className="waveLine"
         sx={{
@@ -56,7 +55,6 @@ export default function JumpingGif({
         }}
       />
 
-      {/* Gif */}
       <Box
         component="img"
         src={jumpingGif}

@@ -1,11 +1,59 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Box, Typography, Avatar, useTheme } from "@mui/material";
 import myPicture from "../../assets/myPicture.jpg";
 import Technologies from "../../components/Technologies/Technologies";
 import JumpingGif from "../../components/JumpingGif/JumpingGif";
 import AnimatedTitle from "../../components/AnimatedTitle/AnimatedTitle";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function About() {
   const theme = useTheme();
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (avatarRef.current) {
+      gsap.fromTo(
+        avatarRef.current,
+        { x: -200, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: avatarRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    }
+
+    if (textRef.current) {
+      gsap.fromTo(
+        textRef.current,
+        { x: 200, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+          },
+          delay: 0.2,
+        }
+      );
+    }
+  }, []);
 
   return (
     <Box
@@ -48,7 +96,9 @@ export default function About() {
           maxWidth: "1200px",
         }}
       >
+        {/* Avatar */}
         <Avatar
+          ref={avatarRef}
           alt="Violeta"
           src={myPicture}
           sx={{
@@ -65,7 +115,9 @@ export default function About() {
           }}
         />
 
+        {/* Texto */}
         <Box
+          ref={textRef}
           sx={{
             position: "relative",
             flex: 1,

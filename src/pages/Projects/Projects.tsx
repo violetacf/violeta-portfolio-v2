@@ -1,3 +1,4 @@
+import AnimatedTitle from "../../components/AnimatedTitle/AnimatedTitle";
 import { projects } from "../../data/projects";
 import {
   Box,
@@ -9,8 +10,7 @@ import {
   useTheme,
   IconButton,
 } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub"; // Use MUI icon
-import React from "react";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import defaultImage from "../../assets/project.jpg";
 
 export default function Projects() {
@@ -34,7 +34,6 @@ export default function Projects() {
         overflow: "hidden",
       }}
     >
-      {/* Scanline overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -45,20 +44,7 @@ export default function Projects() {
         }}
       />
 
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{
-          color: "#00ff99",
-          textAlign: "center",
-          textShadow: "0 0 12px #00ff99",
-          letterSpacing: 2,
-          mb: { xs: 2, md: 4 },
-          fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-        }}
-      >
-        Projects
-      </Typography>
+      <AnimatedTitle text="Projects" />
 
       <Box
         sx={{

@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 import {
   AppBar,
   Button,
@@ -8,13 +8,27 @@ import {
   MenuItem,
   Box,
   useTheme,
+  LinearProgress,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import falloutGif from "../../assets/falloutHello.gif";
 
 export default function NavBar() {
   const [anchorNav, setAnchorNav] = useState<null | HTMLElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const theme = useTheme();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled =
+        (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
+        100;
+      setScrollProgress(scrolled);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const openMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorNav(event.currentTarget);
@@ -45,7 +59,7 @@ export default function NavBar() {
             sx={{ color: theme.palette.secondary.contrastText }}
             onClick={() => scrollToSection("about")}
           >
-            About
+            About me
           </Button>
           <Button
             sx={{ color: theme.palette.secondary.contrastText }}
@@ -94,6 +108,23 @@ export default function NavBar() {
           }}
         />
       </Toolbar>
+
+      <LinearProgress
+        variant="determinate"
+        value={scrollProgress}
+        sx={{
+          height: 6,
+          borderRadius: 3,
+          backgroundColor: "rgba(0,0,0,0.4)",
+          "& .MuiLinearProgress-bar": {
+            background: "linear-gradient(90deg, #39ff14, #0aff9d, #39ff14)",
+            borderRadius: 3,
+            boxShadow: "0 0 10px #39ff14, 0 0 20px #39ff14",
+
+            transition: "all 0.2s ease-in-out",
+          },
+        }}
+      />
     </AppBar>
   );
 }

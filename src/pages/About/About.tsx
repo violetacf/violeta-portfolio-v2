@@ -2,6 +2,7 @@ import { Box, Typography, Avatar, useTheme } from "@mui/material";
 import myPicture from "../../assets/myPicture.jpg";
 import Technologies from "../../components/Technologies/Technologies";
 import JumpingGif from "../../components/JumpingGif/JumpingGif";
+import AnimatedTitle from "../../components/AnimatedTitle/AnimatedTitle";
 
 export default function About() {
   const theme = useTheme();
@@ -34,20 +35,7 @@ export default function About() {
         }}
       />
 
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{
-          color: "#00ff99",
-          textAlign: "center",
-          textShadow: "0 0 12px #00ff99",
-          letterSpacing: 2,
-          mb: { xs: 3, md: 5 },
-          fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-        }}
-      >
-        About me
-      </Typography>
+      <AnimatedTitle text="About me" />
 
       <Box
         sx={{

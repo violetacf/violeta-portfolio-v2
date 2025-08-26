@@ -2,6 +2,7 @@ import { Box, Typography, TextField, Button, Link } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import JumpingGif from "../../components/JumpingGif/JumpingGif";
+import AnimatedTitle from "../../components/AnimatedTitle/AnimatedTitle";
 import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
 
@@ -75,19 +76,7 @@ export default function Contact() {
         }}
       />
 
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{
-          color: "#00ff99",
-          textAlign: "center",
-          textShadow: "0 0 12px #00ff99",
-          letterSpacing: 2,
-          fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-        }}
-      >
-        Contact
-      </Typography>
+      <AnimatedTitle text="Contact" />
 
       <Typography
         sx={{

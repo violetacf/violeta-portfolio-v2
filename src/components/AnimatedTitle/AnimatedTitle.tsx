@@ -48,7 +48,7 @@ export default function AnimatedTitle({ text }: AnimatedTitleProps) {
               displayed += letter;
               titleRef.current!.innerHTML =
                 displayed +
-                `<span style="display:inline-block;opacity:1;color:${theme.palette.primary.main};">${cursor}</span>`;
+                `<span style="display:inline-block;opacity:1;color:${theme.palette.secondary.main};">${cursor}</span>`;
             },
           }
         );
@@ -63,6 +63,7 @@ export default function AnimatedTitle({ text }: AnimatedTitleProps) {
             const current = titleRef.current!.querySelector("span");
             if (current) {
               current.style.opacity = current.style.opacity === "1" ? "0" : "1";
+              current.style.color = theme.palette.secondary.main;
             }
           },
         },

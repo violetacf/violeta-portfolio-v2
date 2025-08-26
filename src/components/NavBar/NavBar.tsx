@@ -122,9 +122,9 @@ export default function NavBar() {
           borderRadius: 3,
           backgroundColor: theme.palette.background.paper,
           "& .MuiLinearProgress-bar": {
-            background: `linear-gradient(90deg, ${theme.palette.success.light}, ${theme.palette.success.main}, ${theme.palette.success.light})`,
+            background: `linear-gradient(90deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.main}, ${theme.palette.secondary.light})`,
             borderRadius: 3,
-            boxShadow: `0 0 10px ${theme.palette.success.main}, 0 0 20px ${theme.palette.success.main}`,
+            boxShadow: `0 0 10px ${theme.palette.secondary.main}, 0 0 20px ${theme.palette.secondary.main}`,
             transition: "all 0.2s ease-in-out",
           },
         }}

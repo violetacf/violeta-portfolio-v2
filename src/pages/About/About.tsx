@@ -19,8 +19,8 @@ export default function About() {
         px: { xs: 2, sm: 4 },
         py: { xs: 6, md: 10 },
         gap: { xs: 4, md: 8 },
-        backgroundColor: "#0b0b0b",
-        fontFamily: "'VT323', monospace",
+        backgroundColor: theme.palette.background.default,
+        fontFamily: theme.typography.fontFamily,
         position: "relative",
         overflow: "hidden",
       }}
@@ -29,8 +29,7 @@ export default function About() {
         sx={{
           position: "absolute",
           inset: 0,
-          background:
-            "repeating-linear-gradient(to bottom, rgba(0,255,153,0.05) 0, rgba(0,255,153,0.05) 1px, transparent 1px, transparent 3px)",
+          background: `repeating-linear-gradient(to bottom, ${theme.palette.primary.main}0D 0, ${theme.palette.primary.main}0D 1px, transparent 1px, transparent 3px)`,
           pointerEvents: "none",
         }}
       />
@@ -55,12 +54,12 @@ export default function About() {
           sx={{
             width: { xs: 160, sm: 200, md: 260, lg: 300 },
             height: { xs: 160, sm: 200, md: 260, lg: 300 },
-            border: "3px solid #00ff99",
-            boxShadow: "0 0 25px #00ff99",
+            border: `3px solid ${theme.palette.primary.main}`,
+            boxShadow: `0 0 25px ${theme.palette.primary.main}`,
             transition: "all 0.3s ease-in-out",
             flexShrink: 0,
             "&:hover": {
-              boxShadow: "0 0 40px #00ff99",
+              boxShadow: `0 0 40px ${theme.palette.primary.main}`,
               transform: "scale(1.05)",
             },
           }}
@@ -75,12 +74,12 @@ export default function About() {
             p: { xs: 3, sm: 4, md: 5 },
             border: `2px solid ${theme.palette.primary.main}`,
             borderRadius: 3,
-            backgroundColor: "#111",
-            boxShadow: "0 0 25px #00ff00, inset 0 0 15px #00ff00",
-            fontFamily: "'VT323', monospace",
-            color: "#00ff00",
+            backgroundColor: theme.palette.background.paper,
+            boxShadow: `0 0 25px ${theme.palette.primary.main}, inset 0 0 15px ${theme.palette.primary.main}`,
+            fontFamily: theme.typography.fontFamily,
+            color: theme.palette.primary.main,
             textAlign: "left",
-            fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" }, // regular text
+            fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
             lineHeight: 1.6,
             display: "flex",
             flexDirection: "column",
@@ -90,9 +89,9 @@ export default function About() {
         >
           <Typography
             sx={{
-              color: "#00ffcc",
+              color: theme.palette.secondary.main,
               fontWeight: "bold",
-              fontSize: { xs: "0.8rem", sm: "0.95rem", md: "1.1rem" }, // slightly bigger for headings
+              fontSize: { xs: "0.8rem", sm: "0.95rem", md: "1.1rem" },
             }}
           >
             [VAULT-TEC TERMINAL LOG: VIOLETA.EXE]

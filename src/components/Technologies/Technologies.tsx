@@ -13,15 +13,16 @@ export default function Technologies() {
       justifyContent="center"
       padding={{ xs: 2, sm: 3, md: 4 }}
       sx={{
+        fontFamily: theme.typography.fontFamily,
         "& svg": {
-          color: "#00ff99",
+          color: theme.palette.primary.main,
           transition: "all 0.3s ease-in-out",
-          filter: "drop-shadow(0 0 1pt #00ff99) drop-shadow(0 0 15px #00ff99)",
+          filter: `drop-shadow(0 0 1pt ${theme.palette.primary.main}) drop-shadow(0 0 15px ${theme.palette.primary.main})`,
           animation: "flicker 1.5s infinite alternate",
         },
         "&:hover svg": {
           transform: "scale(1.15)",
-          filter: "drop-shadow(0 0 1pt #00ff99) drop-shadow(0 0 25px #00ff99)",
+          filter: `drop-shadow(0 0 1pt ${theme.palette.primary.main}) drop-shadow(0 0 25px ${theme.palette.primary.main})`,
         },
       }}
     >

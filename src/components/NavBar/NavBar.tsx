@@ -54,6 +54,7 @@ export default function NavBar() {
       sx={{ backgroundColor: theme.palette.primary.main }}
     >
       <Toolbar sx={{ justifyContent: "space-between", position: "relative" }}>
+        {/* Desktop menu */}
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
           <Button
             sx={{ color: theme.palette.secondary.contrastText }}
@@ -75,6 +76,7 @@ export default function NavBar() {
           </Button>
         </Box>
 
+        {/* Mobile menu */}
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <IconButton
             sx={{ color: theme.palette.secondary.contrastText }}
@@ -96,6 +98,8 @@ export default function NavBar() {
             </MenuItem>
           </Menu>
         </Box>
+
+        {/* Fallout icon */}
         <Box
           component="img"
           src={falloutGif}
@@ -109,18 +113,18 @@ export default function NavBar() {
         />
       </Toolbar>
 
+      {/* Scroll progress bar */}
       <LinearProgress
         variant="determinate"
         value={scrollProgress}
         sx={{
           height: 6,
           borderRadius: 3,
-          backgroundColor: "rgba(0,0,0,0.4)",
+          backgroundColor: theme.palette.background.paper,
           "& .MuiLinearProgress-bar": {
-            background: "linear-gradient(90deg, #39ff14, #0aff9d, #39ff14)",
+            background: `linear-gradient(90deg, ${theme.palette.success.light}, ${theme.palette.success.main}, ${theme.palette.success.light})`,
             borderRadius: 3,
-            boxShadow: "0 0 10px #39ff14, 0 0 20px #39ff14",
-
+            boxShadow: `0 0 10px ${theme.palette.success.main}, 0 0 20px ${theme.palette.success.main}`,
             transition: "all 0.2s ease-in-out",
           },
         }}

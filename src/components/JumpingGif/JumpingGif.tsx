@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import jumpingGif from "../../assets/falloutJumping.gif";
 
@@ -11,6 +11,7 @@ export default function JumpingGif({
   size = { xs: 60, sm: 80, md: 90 },
   message = "Hello World!",
 }: JumpingGifProps) {
+  const theme = useTheme();
   const [jump, setJump] = useState(false);
   const gifRef = useRef<HTMLDivElement>(null);
   const [gifLeft, setGifLeft] = useState(0);
@@ -41,8 +42,13 @@ export default function JumpingGif({
           left: 0,
           width: "100%",
           height: "30pt",
-          background:
-            "repeating-linear-gradient(90deg, transparent, transparent 10px, #00ff99 10px, #00ff99 11px)",
+          background: `repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 10px,
+            ${theme.palette.primary.main} 10px,
+            ${theme.palette.primary.main} 11px
+          )`,
           maskImage:
             "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
           maskRepeat: "repeat-x",
@@ -51,7 +57,7 @@ export default function JumpingGif({
             "url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%25%22 height=%22100%25%22><path d=%22M0,20 Q25,0 50,20 T100,20 V40 H0 Z%22 fill=%22white%22/></svg>')",
           WebkitMaskRepeat: "repeat-x",
           WebkitMaskSize: "100px 40px",
-          boxShadow: "0 0 15px #00ff99",
+          boxShadow: `0 0 15px ${theme.palette.primary.main}`,
         }}
       />
 
@@ -79,13 +85,13 @@ export default function JumpingGif({
             position: "absolute",
             bottom: 150,
             left: gifLeft,
-            backgroundColor: "#00ff99",
-            color: "#000",
-            fontFamily: "'VT323', monospace",
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.background.default,
+            fontFamily: theme.typography.fontFamily,
             fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
             padding: "6px 12px",
             borderRadius: 3,
-            boxShadow: "0 0 12px #00ff99",
+            boxShadow: `0 0 12px ${theme.palette.primary.main}`,
             whiteSpace: "nowrap",
             zIndex: 2,
             animation: "fadeUp 1.2s ease-out",

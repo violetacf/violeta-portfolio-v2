@@ -1,4 +1,11 @@
-import { Box, Typography, TextField, Button, Link } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Link,
+  useTheme,
+} from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import JumpingGif from "../../components/JumpingGif/JumpingGif";
@@ -7,6 +14,7 @@ import emailjs from "emailjs-com";
 import Swal from "sweetalert2";
 
 export default function Contact() {
+  const theme = useTheme();
   const serviceID = process.env.REACT_APP_SERVICE_ID!;
   const templateID = process.env.REACT_APP_TEMPLATE_ID!;
   const publicKey = process.env.REACT_APP_PUBLIC_KEY!;
@@ -58,8 +66,8 @@ export default function Contact() {
         px: { xs: 2, sm: 4 },
         py: { xs: 6, md: 10 },
         gap: { xs: 4, md: 6 },
-        backgroundColor: "#0b0b0b",
-        fontFamily: "'VT323', monospace",
+        backgroundColor: theme.palette.background.default,
+        fontFamily: theme.typography.fontFamily,
         position: "relative",
         overflow: "hidden",
       }}
@@ -70,8 +78,7 @@ export default function Contact() {
         sx={{
           position: "absolute",
           inset: 0,
-          background:
-            "repeating-linear-gradient(to bottom, rgba(0,255,153,0.05) 0, rgba(0,255,153,0.05) 1px, transparent 1px, transparent 3px)",
+          background: `repeating-linear-gradient(to bottom, ${theme.palette.primary.main}0D 0, ${theme.palette.primary.main}0D 1px, transparent 1px, transparent 3px)`,
           pointerEvents: "none",
         }}
       />
@@ -80,7 +87,7 @@ export default function Contact() {
 
       <Typography
         sx={{
-          color: "#00ff99",
+          color: theme.palette.primary.main,
           maxWidth: "600px",
           textAlign: "center",
           mb: 3,
@@ -102,50 +109,36 @@ export default function Contact() {
           zIndex: 1,
         }}
       >
-        <TextField
-          label="Email"
-          name="user_email"
-          type="email"
-          required
-          variant="outlined"
-          InputLabelProps={{ style: { color: "#00ff99" } }}
-          InputProps={{
-            style: { color: "#00ff99", borderColor: "#00ff99" },
-          }}
-        />
-        <TextField
-          label="Name"
-          name="user_name"
-          required
-          variant="outlined"
-          InputLabelProps={{ style: { color: "#00ff99" } }}
-          InputProps={{
-            style: { color: "#00ff99" },
-          }}
-        />
-        <TextField
-          label="Message"
-          name="user_message"
-          required
-          multiline
-          rows={4}
-          variant="outlined"
-          InputLabelProps={{ style: { color: "#00ff99" } }}
-          InputProps={{
-            style: { color: "#00ff99" },
-          }}
-        />
+        {["user_email", "user_name", "user_message"].map((field, idx) => (
+          <TextField
+            key={field}
+            label={
+              field === "user_email"
+                ? "Email"
+                : field === "user_name"
+                ? "Name"
+                : "Message"
+            }
+            name={field}
+            required
+            multiline={field === "user_message"}
+            rows={field === "user_message" ? 4 : undefined}
+            variant="outlined"
+            InputLabelProps={{ style: { color: theme.palette.primary.main } }}
+            InputProps={{ style: { color: theme.palette.primary.main } }}
+          />
+        ))}
 
         <Button
           type="submit"
           sx={{
-            backgroundColor: "#00ff99",
-            color: "#0b0b0b",
-            fontFamily: "'VT323', monospace",
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.background.default,
+            fontFamily: theme.typography.fontFamily,
             fontSize: "1.2rem",
             fontWeight: "bold",
             "&:hover": {
-              backgroundColor: "#00cc77",
+              backgroundColor: theme.palette.primary.main + "CC",
             },
           }}
         >
@@ -161,49 +154,41 @@ export default function Contact() {
           zIndex: 1,
         }}
       >
-        <Link
-          href="https://www.linkedin.com/in/violeta-cf/"
-          target="_blank"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "#00ff99",
-            textDecoration: "none",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
-              transform: "scale(1.2)",
-              textShadow: "0 0 25px #00ff99",
-            },
-          }}
-        >
-          <LinkedInIcon sx={{ fontSize: { xs: 50, sm: 60, md: 70 } }} />
-          <Typography sx={{ mt: 1, fontSize: { xs: "1rem", sm: "1.1rem" } }}>
-            LinkedIn
-          </Typography>
-        </Link>
-
-        <Link
-          href="https://github.com/violetacf"
-          target="_blank"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            color: "#00ff99",
-            textDecoration: "none",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
-              transform: "scale(1.2)",
-              textShadow: "0 0 25px #00ff99",
-            },
-          }}
-        >
-          <GitHubIcon sx={{ fontSize: { xs: 50, sm: 60, md: 70 } }} />
-          <Typography sx={{ mt: 1, fontSize: { xs: "1rem", sm: "1.1rem" } }}>
-            GitHub
-          </Typography>
-        </Link>
+        {[
+          {
+            href: "https://www.linkedin.com/in/violeta-cf/",
+            Icon: LinkedInIcon,
+            label: "LinkedIn",
+          },
+          {
+            href: "https://github.com/violetacf",
+            Icon: GitHubIcon,
+            label: "GitHub",
+          },
+        ].map(({ href, Icon, label }) => (
+          <Link
+            key={label}
+            href={href}
+            target="_blank"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              color: theme.palette.primary.main,
+              textDecoration: "none",
+              transition: "all 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.2)",
+                textShadow: `0 0 25px ${theme.palette.primary.main}`,
+              },
+            }}
+          >
+            <Icon sx={{ fontSize: { xs: 50, sm: 60, md: 70 } }} />
+            <Typography sx={{ mt: 1, fontSize: { xs: "1rem", sm: "1.1rem" } }}>
+              {label}
+            </Typography>
+          </Link>
+        ))}
       </Box>
 
       <style>
@@ -211,50 +196,6 @@ export default function Contact() {
           @keyframes flicker {
             0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
             20%, 22%, 24%, 55% { opacity: 0.75; }
-          }
-
-          /* General flicker for most elements */
-          h3, label, input, textarea, a, svg { 
-            animation: flicker 1.5s infinite alternate; 
-          }
-
-          /* Buttons outside popups get flicker */
-          button:not(.swal2-confirm) {
-            animation: flicker 1.5s infinite alternate; 
-          }
-
-          /* Popup styling */
-          .fallout-popup {
-            background-color: #0b0b0b !important;
-            border: 2px solid #00ff99;
-            font-family: 'VT323', monospace;
-            text-shadow: 0 0 12px #00ff99;
-          }
-
-          .fallout-title {
-            color: #00ff99 !important;
-            letter-spacing: 2px;
-            font-size: 1.8rem;
-            text-shadow: 0 0 12px #00ff99;
-          }
-
-          .fallout-button {
-            background-color: #00ff99 !important;
-            color: #0b0b0b !important;
-            font-family: 'VT323', monospace;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 8px;
-            text-transform: uppercase;
-            transition: all 0.3s ease-in-out;
-            pointer-events: auto !important; /* ensures button is clickable */
-            animation: none !important; /* disables flicker */
-          }
-
-          .fallout-button:hover {
-            background-color: #00cc77 !important;
-            transform: scale(1.05);
-            text-shadow: 0 0 20px #00ff99;
           }
         `}
       </style>

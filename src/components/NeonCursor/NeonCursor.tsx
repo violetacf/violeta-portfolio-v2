@@ -68,9 +68,11 @@ export default function NeonCursor() {
           pointerEvents: "none",
           transform: "translate(-50%, -50%)",
           zIndex: 9999,
-          boxShadow: `0 0 8px ${theme.palette.primary.main}, 0 0 15px ${theme.palette.primary.main}`,
+          boxShadow: `0 0 8px ${theme.palette.primary.main}, 
+                      0 0 15px ${theme.palette.primary.main}`,
         }}
       />
+
       <div
         ref={followerRef}
         style={{
@@ -85,7 +87,8 @@ export default function NeonCursor() {
           pointerEvents: "none",
           transform: "translate(-50%, -50%)",
           zIndex: 9998,
-          boxShadow: `0 0 12px ${theme.palette.primary.main}, 0 0 25px ${theme.palette.primary.main}`,
+          boxShadow: `0 0 12px ${theme.palette.primary.main}, 
+                      0 0 25px ${theme.palette.primary.main}`,
         }}
       />
 
@@ -95,13 +98,13 @@ export default function NeonCursor() {
             position: "fixed",
             top: mousePos.y - 50,
             left: mousePos.x + 20,
-            backgroundColor: "#00ff99",
-            color: "#000",
-            fontFamily: "'VT323', monospace",
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.background.default,
+            fontFamily: theme.typography.fontFamily,
             fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
             padding: "6px 12px",
             borderRadius: 3,
-            boxShadow: "0 0 12px #00ff99",
+            boxShadow: `0 0 12px ${theme.palette.primary.main}`,
             whiteSpace: "nowrap",
             zIndex: 2,
             animation: "fadeUp 1.2s ease-out",

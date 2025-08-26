@@ -1,14 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTheme } from "@mui/material/styles";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AnimatedTitle({ text }: { text: string }) {
+interface AnimatedTitleProps {
+  text: string;
+}
+
+export default function AnimatedTitle({ text }: AnimatedTitleProps) {
+  const theme = useTheme();
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [fontSize, setFontSize] = useState("3rem");
 
-  // Actualizar tamaño según ancho de pantalla
   useEffect(() => {
     const updateFontSize = () => {
       const w = window.innerWidth;
@@ -16,7 +21,6 @@ export default function AnimatedTitle({ text }: { text: string }) {
       else if (w < 900) setFontSize("2.5rem");
       else setFontSize("3rem");
     };
-
     updateFontSize();
     window.addEventListener("resize", updateFontSize);
     return () => window.removeEventListener("resize", updateFontSize);
@@ -44,7 +48,7 @@ export default function AnimatedTitle({ text }: { text: string }) {
               displayed += letter;
               titleRef.current!.innerHTML =
                 displayed +
-                `<span style="display:inline-block;opacity:1">${cursor}</span>`;
+                `<span style="display:inline-block;opacity:1;color:${theme.palette.primary.main};">${cursor}</span>`;
             },
           }
         );
@@ -77,19 +81,19 @@ export default function AnimatedTitle({ text }: { text: string }) {
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
-  }, [text]);
+  }, [text, theme.palette.primary.main]);
 
   return (
     <h3
       ref={titleRef}
       aria-label={text}
       style={{
-        color: "#00ff99",
+        color: theme.palette.primary.main,
         textAlign: "center",
-        textShadow: "0 0 12px #00ff99",
+        textShadow: `0 0 12px ${theme.palette.primary.main}`,
         letterSpacing: 2,
         marginBottom: "1.5rem",
-        fontFamily: "'VT323', monospace",
+        fontFamily: theme.typography.fontFamily,
         whiteSpace: "pre",
         fontSize,
         minHeight: "3.5rem",

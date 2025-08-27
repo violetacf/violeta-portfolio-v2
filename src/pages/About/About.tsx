@@ -106,7 +106,6 @@ export default function About() {
             height: { xs: 160, sm: 200, md: 260, lg: 300 },
             border: `3px solid ${theme.palette.primary.main}`,
             boxShadow: `0 0 25px ${theme.palette.primary.main}`,
-            transition: "all 0.3s ease-in-out",
             flexShrink: 0,
             "&:hover": {
               boxShadow: `0 0 40px ${theme.palette.primary.main}`,

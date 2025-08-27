@@ -125,7 +125,7 @@ export default function NavBar() {
             background: `linear-gradient(90deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.main}, ${theme.palette.secondary.light})`,
             borderRadius: 3,
             boxShadow: `0 0 10px ${theme.palette.secondary.main}, 0 0 20px ${theme.palette.secondary.main}`,
-            transition: "all 0.2s ease-in-out",
+            transition: "none",
           },
         }}
       />

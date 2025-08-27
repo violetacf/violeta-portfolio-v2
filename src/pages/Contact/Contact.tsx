@@ -27,13 +27,16 @@ export default function Contact() {
       .sendForm(serviceID, templateID, e.currentTarget, publicKey)
       .then(() => {
         Swal.fire({
-          html: `
-            <h2 class="fallout-title">Message Sent Successfully</h2>
-            <img src="${OKgif}" width="100" style="display:block; margin: 0 auto;" />
-          `,
+          icon: "success",
+          title: "Message Sent Successfully",
+          imageUrl: OKgif,
+          imageWidth: 100,
+          imageHeight: 100,
+          imageAlt: "Success",
           confirmButtonText: "OK",
           customClass: {
             popup: "fallout-popup",
+            title: "fallout-title",
             confirmButton: "fallout-button",
           },
         });

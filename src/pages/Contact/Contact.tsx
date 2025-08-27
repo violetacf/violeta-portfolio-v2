@@ -72,7 +72,7 @@ export default function Contact() {
         overflow: "hidden",
       }}
     >
-      <JumpingGif message="Contact me here!" />
+      <JumpingGif message="Hello world!" />
 
       <Box
         sx={{

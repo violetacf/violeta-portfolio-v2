@@ -160,7 +160,7 @@ export default function About() {
           <Typography
             sx={{ fontSize: { xs: "0.65rem", sm: "0.8rem", md: "0.95rem" } }}
           >
-            ONLINE — READY TO CODE
+            ONLINE — FULL-STACK DEVELOPER
           </Typography>
 
           <Typography
@@ -171,22 +171,46 @@ export default function About() {
           >
             CORE MODULES:
           </Typography>
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-            <Typography
-              sx={{ fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" } }}
-            >
-              - Accessibility
-            </Typography>
-            <Typography
-              sx={{ fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" } }}
-            >
-              - Frontend
-            </Typography>
-            <Typography
-              sx={{ fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" } }}
-            >
-              - Backend
-            </Typography>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+            {[
+              "- JavaScript | TypeScript | Go | Dart",
+              "- React | Vue 2 & 3 | Flutter",
+            ].map((tech, idx) => (
+              <Typography
+                key={idx}
+                sx={{
+                  fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" },
+                }}
+              >
+                {tech}
+              </Typography>
+            ))}
+          </Box>
+
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
+            }}
+          >
+            MISSION FILES:
+          </Typography>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+            {[
+              "- Built responsive web and mobile apps",
+              "- Developed backend services and APIs",
+              "- Migrated legacy systems to modern stacks",
+              "- Delivered projects across frontend, backend & infrastructure",
+            ].map((task, idx) => (
+              <Typography
+                key={idx}
+                sx={{
+                  fontSize: { xs: "0.63rem", sm: "0.78rem", md: "0.95rem" },
+                }}
+              >
+                {task}
+              </Typography>
+            ))}
           </Box>
 
           <Typography
@@ -200,7 +224,7 @@ export default function About() {
           <Typography
             sx={{ fontSize: { xs: "0.65rem", sm: "0.8rem", md: "0.95rem" } }}
           >
-            Build inclusive digital experiences for all users.
+            Build accessible and inclusive digital experiences for all users.
           </Typography>
 
           <Typography
@@ -213,17 +237,17 @@ export default function About() {
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
             {[
+              "- Women Techmakers Madrid [VOLUNTEER]",
               "- Plant caretaker [ACTIVE]",
-              "- Animal companion protocols [ACTIVE]",
-              "- Physical training: pull-ups x3 [NEW RECORD]",
-              "- Café locator: Madrid sector [ONLINE]",
+              "- Physical training: pull-ups x4 [NEW RECORD]",
+              "- Coffee finder [MADRID SECTOR ONLINE]",
               "- Gaming immersion [RUNNING]",
-              "- Thriller archives [DECRYPTING NIGHTLY]",
-              "- Puzzle-solving routines [OPTIMIZED]",
             ].map((item, idx) => (
               <Typography
                 key={idx}
-                sx={{ fontSize: { xs: "0.6rem", sm: "0.75rem", md: "0.9rem" } }}
+                sx={{
+                  fontSize: { xs: "0.6rem", sm: "0.75rem", md: "0.9rem" },
+                }}
               >
                 {item}
               </Typography>
@@ -233,7 +257,6 @@ export default function About() {
       </Box>
 
       <Technologies />
-      <JumpingGif />
 
       <style>
         {`

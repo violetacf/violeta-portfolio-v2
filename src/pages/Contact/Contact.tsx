@@ -29,8 +29,7 @@ export default function Contact() {
         Swal.fire({
           // icon: "success",
           title: "Message Sent Successfully",
-          imageUrl: OKgif,
-          imageWidth: 100,
+          html: `<img src="${OKgif}" width="100" style="display:block; margin: 0 auto;" />`,
           confirmButtonText: "OK",
           customClass: {
             popup: "fallout-popup",

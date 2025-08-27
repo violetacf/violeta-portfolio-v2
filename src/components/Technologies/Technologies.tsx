@@ -1,12 +1,45 @@
+import { useEffect, useRef } from "react";
 import { Box, useTheme } from "@mui/material";
 import { technologies } from "../../data/technologies";
 import { IconType, IconBaseProps } from "react-icons";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Technologies() {
   const theme = useTheme();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const icons = containerRef.current.querySelectorAll(".tech-icon");
+
+      gsap.fromTo(
+        icons,
+        { opacity: 0, scale: 0.5, y: 50 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "back.out(1.7)",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 85%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+            // 👆 ensures it reverses on scroll up
+          },
+        }
+      );
+    }
+  }, []);
 
   return (
     <Box
+      ref={containerRef}
       display="flex"
       flexWrap="wrap"
       gap={{ xs: 2, sm: 3, md: 4 }}
@@ -36,6 +69,7 @@ export default function Technologies() {
         return (
           <Box
             key={tech.name}
+            className="tech-icon"
             display="flex"
             flexDirection="column"
             alignItems="center"

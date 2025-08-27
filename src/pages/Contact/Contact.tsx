@@ -27,13 +27,13 @@ export default function Contact() {
       .sendForm(serviceID, templateID, e.currentTarget, publicKey)
       .then(() => {
         Swal.fire({
-          // icon: "success",
-          title: "Message Sent Successfully",
-          html: `<img src="${OKgif}" width="100" style="display:block; margin: 0 auto;" />`,
+          html: `
+            <h2 class="fallout-title">Message Sent Successfully</h2>
+            <img src="${OKgif}" width="100" style="display:block; margin: 0 auto;" />
+          `,
           confirmButtonText: "OK",
           customClass: {
             popup: "fallout-popup",
-            title: "fallout-title",
             confirmButton: "fallout-button",
           },
         });
@@ -111,7 +111,7 @@ export default function Contact() {
           zIndex: 1,
         }}
       >
-        {["user_email", "user_name", "user_message"].map((field, idx) => (
+        {["user_email", "user_name", "user_message"].map((field) => (
           <TextField
             key={field}
             label={

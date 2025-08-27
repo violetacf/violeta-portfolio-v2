@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import OKgif from "../../assets/falloutOK.gif";
 import JumpingGif from "../../components/JumpingGif/JumpingGif";
 import AnimatedTitle from "../../components/AnimatedTitle/AnimatedTitle";
 import emailjs from "emailjs-com";
@@ -26,8 +27,10 @@ export default function Contact() {
       .sendForm(serviceID, templateID, e.currentTarget, publicKey)
       .then(() => {
         Swal.fire({
-          icon: "success",
+          // icon: "success",
           title: "Message Sent Successfully",
+          imageUrl: OKgif,
+          imageWidth: 100,
           confirmButtonText: "OK",
           customClass: {
             popup: "fallout-popup",

@@ -27,16 +27,12 @@ export default function Contact() {
       .sendForm(serviceID, templateID, e.currentTarget, publicKey)
       .then(() => {
         Swal.fire({
-          icon: "success",
           title: "Message Sent Successfully",
-          imageUrl: OKgif,
-          imageWidth: 100,
-          imageHeight: 100,
-          imageAlt: "Success",
+          html: `<img src="${OKgif}" alt="OK" style="width: 100px; margin-bottom: 1rem;" />`,
+          showConfirmButton: true,
           confirmButtonText: "OK",
           customClass: {
             popup: "fallout-popup",
-            title: "fallout-title",
             confirmButton: "fallout-button",
           },
         });
@@ -49,7 +45,6 @@ export default function Contact() {
           confirmButtonText: "OK",
           customClass: {
             popup: "fallout-popup",
-            title: "fallout-title",
             confirmButton: "fallout-button",
           },
         });
@@ -201,9 +196,27 @@ export default function Contact() {
 
       <style>
         {`
-          @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-            20%, 22%, 24%, 55% { opacity: 0.75; }
+          .fallout-popup {
+            background-color: ${theme.palette.background.paper};
+            border: 3px solid ${theme.palette.primary.main};
+            color: ${theme.palette.primary.main};
+            font-family: ${theme.typography.fontFamily};
+            text-align: center;
+          }
+
+          .fallout-button {
+            background-color: ${theme.palette.primary.main};
+            color: ${theme.palette.background.default};
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+          }
+
+          .fallout-button:hover {
+            background-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.background.default};
+            text-shadow: 0 0 10px ${theme.palette.primary.main};
           }
         `}
       </style>

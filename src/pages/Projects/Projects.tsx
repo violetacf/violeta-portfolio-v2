@@ -39,10 +39,9 @@ export default function Projects() {
           scrollTrigger: {
             trigger: card,
             start: "top 80%",
-            end: "bottom 20%", // hasta que salga de la sección
-            toggleActions: "play reverse play reverse", // entra y sale según scroll
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
           },
-          delay: index * 0.1,
         }
       );
     });

@@ -19,7 +19,7 @@ export default function MobilePreview({
   onClose,
 }: MobilePreviewProps) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery("(max-height:820px), (max-width:600px)");
 
   return (
     <Dialog

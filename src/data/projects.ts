@@ -1,6 +1,7 @@
 import lilybloom from "../assets/project-lilybloom.png";
 import nearend from "../assets/project-nearend.png";
 import monsterslayer from "../assets/project-monsterslayer.png";
+import spaceEscapeRoom from "../assets/project-space-escape-room.png";
 
 export const projects = [
   {
@@ -10,6 +11,8 @@ export const projects = [
     image: nearend,
     link: "https://is-the-end-near.onrender.com/",
     github: "https://github.com/violetacf/near-earth",
+    mobilePreview: true,
+    browserPreview: true,
   },
   {
     title: "LilyBloom",
@@ -18,6 +21,18 @@ export const projects = [
     image: lilybloom,
     link: "https://lilybloom.onrender.com/",
     github: "https://github.com/violetacf/lilybloom-frontend",
+    mobilePreview: true,
+    browserPreview: true,
+  },
+  {
+    title: "Flutter App",
+    description:
+      "A Flutter web app for showcase, running inside a mobile modal.",
+    image: spaceEscapeRoom,
+    link: "https://space-escape-room.onrender.com/",
+    github: "https://github.com/violetacf/space_escape_room",
+    mobilePreview: true,
+    browserPreview: false, // mobile only
   },
   {
     title: "Monster Slayer",
@@ -26,5 +41,7 @@ export const projects = [
     image: monsterslayer,
     link: "https://monster-slayer-1rdt.onrender.com/",
     github: "https://github.com/violetacf/monster-slayer",
+    mobilePreview: false, // no mobile modal - add when responsive
+    browserPreview: true,
   },
 ];

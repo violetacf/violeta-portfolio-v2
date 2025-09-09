@@ -1,25 +1,17 @@
-import { useEffect } from "react";
 import { Box, useTheme, Dialog } from "@mui/material";
 
 interface MobilePreviewProps {
   src: string;
   open: boolean;
   onClose: () => void;
-  onModalChange?: (isOpen: boolean) => void; // <-- nueva prop para avisar al cursor
 }
 
 export default function MobilePreview({
   src,
   open,
   onClose,
-  onModalChange,
 }: MobilePreviewProps) {
   const theme = useTheme();
-
-  // Avisar al cursor cuando el modal se abre o se cierra
-  useEffect(() => {
-    onModalChange?.(open);
-  }, [open, onModalChange]);
 
   return (
     <Dialog
@@ -68,7 +60,6 @@ export default function MobilePreview({
             position: "relative",
           }}
         >
-          {/* Speaker notch */}
           <Box
             sx={{
               width: 60,

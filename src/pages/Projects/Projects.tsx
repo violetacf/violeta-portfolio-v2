@@ -12,11 +12,10 @@ import {
   Button,
   useTheme,
   IconButton,
-  Dialog,
-  DialogContent,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import defaultImage from "../../assets/project.jpg";
+import MobilePreview from "../../components/MobilePreview/MobilePreview";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -138,8 +137,8 @@ export default function Projects() {
                 loading="lazy"
                 sx={{
                   borderBottom: `2px solid ${theme.palette.primary.main}`,
-                  objectFit: "contain", // <-- keep full image visible
-                  backgroundColor: theme.palette.background.default, // optional: fill empty space
+                  objectFit: "contain",
+                  backgroundColor: theme.palette.background.default,
                 }}
               />
 
@@ -258,26 +257,12 @@ export default function Projects() {
         </Box>
       </Box>
 
-      {/* Modal for mobile preview */}
-      <Dialog
+      {/* Modal que controla NeonCursor */}
+      <MobilePreview
+        src={iframeSrc}
         open={openIframe}
         onClose={handleCloseIframe}
-        maxWidth="xs"
-        fullWidth
-        PaperProps={{
-          sx: { width: 375, height: 812, borderRadius: 3, overflow: "hidden" },
-        }}
-      >
-        <DialogContent sx={{ p: 0, height: "100%" }}>
-          <iframe
-            src={iframeSrc}
-            width="100%"
-            height="100%"
-            style={{ border: "none" }}
-            title="Mobile Preview"
-          />
-        </DialogContent>
-      </Dialog>
+      />
     </>
   );
 }

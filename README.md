@@ -27,7 +27,7 @@ Welcome to my personal portfolio! I’m a **frontend & full stack developer** pa
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone git@github.com:violetacf/violeta-portfolio-v2.git
 cd portfolio
 npm install
 ```

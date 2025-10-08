@@ -2,6 +2,7 @@ import lilybloom from "../assets/project-lilybloom.png";
 import nearend from "../assets/project-nearend.png";
 import monsterslayer from "../assets/project-monsterslayer.png";
 import spaceEscapeRoom from "../assets/project-space-escape-room.png";
+import todoApp from "../assets/project-todo-app.png";
 
 export const projects = [
   {
@@ -25,9 +26,9 @@ export const projects = [
     browserPreview: true,
   },
   {
-    title: "Flutter App",
+    title: "Space Escape Room - WIP",
     description:
-      "A Flutter web app for showcase, running inside a mobile modal.",
+      "A Flutter web app with a small escape room, running inside a mobile modal.",
     image: spaceEscapeRoom,
     link: "https://space-escape-room.onrender.com/",
     github: "https://github.com/violetacf/space_escape_room",
@@ -35,7 +36,17 @@ export const projects = [
     browserPreview: false, // mobile only
   },
   {
-    title: "Monster Slayer",
+    title: "ToDo App",
+    description:
+      "A Flutter web app with a small escape room, running inside a mobile modal.",
+    image: todoApp,
+    link: "https://todo-flutter-project.onrender.com/",
+    github: "https://github.com/violetacf/reto_auj_mobile",
+    mobilePreview: true,
+    browserPreview: false, // mobile only
+  },
+  {
+    title: "Monster Slayer  - WIP",
     description:
       "A Vue project game where you battle monsters and control heroes with dynamic animations.",
     image: monsterslayer,
